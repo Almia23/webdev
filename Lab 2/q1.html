@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    label { display: block; margin-top: 8px; }
+    table { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h3>Student Bio-data</h3>
+  <form>
+    <label>Name: <input type="text"></label>
+    <label>Gender:
+      <input type="radio" name="gender">Male
+      <input type="radio" name="gender">Female
+    </label>
+    <label>Languages:
+      <input type="checkbox">English
+      <input type="checkbox">Hindi
+    </label>
+    <table border="1">
+      <tr><td>DOB</td><td><input type="date"></td></tr>
+      <tr><td>Email</td><td><input type="email"></td></tr>
+    </table>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

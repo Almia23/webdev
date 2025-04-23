@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Card</title>
+  <!-- jQuery -->
+  <script src="../jquery-3.7.1.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#updateBtn").click(function(){
+        // Read values from controls
+        var bgColor = $("#bgColor").val();
+        var fontName = $("#fontName").val();
+        var fontSize = $("#fontSize").val();
+        var borderStyle = $("input[name='borderStyle']:checked").val();
+        var greetingText = $("#greetingText").val();
+        
+        // Apply background color, font, and font size
+        $("#card").css({
+          "background-color": bgColor,
+          "font-family": fontName,
+          "font-size": fontSize + "px"
+        });
+        
+        // Apply border style
+        if(borderStyle === "none") {
+          $("#card").css("border", "none");
+        } else {
+          // 2px border, chosen style, black color
+          $("#card").css("border", "2px " + borderStyle + " black");
+        }
+        
+        // Update the greeting text
+        $("#message").text(greetingText);
+        
+        // Show/hide the cake image
+        if($("#defaultPic").is(":checked")){
+          $("#cakeImg").show();
+        } else {
+          $("#cakeImg").hide();
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <!-- Left side controls -->
+  <div style="float: left;">
+    <p>Choose a background color:</p>
+    <select id="bgColor">
+      <option value="yellow" selected>Yellow</option>
+      <option value="pink">Pink</option>
+      <option value="lightblue">Light Blue</option>
+      <option value="white">White</option>
+    </select>
+    
+    <p>Choose a font:</p>
+    <select id="fontName">
+      <option value="Arial">Arial</option>
+      <option value="Verdana" selected>Verdana</option>
+      <option value="Times New Roman">Times New Roman</option>
+      <option value="Courier">Courier</option>
+    </select>
+    
+    <p>Specify a numeric font size:</p>
+    <input type="number" id="fontSize" value="25">
+    
+    <p>Choose a border style:</p>
+    <label><input type="radio" name="borderStyle" value="none" checked>None</label>
+    <label><input type="radio" name="borderStyle" value="double">Double</label>
+    <label><input type="radio" name="borderStyle" value="solid">Solid</label>
+    
+    <p>Add the Default Picture:</p>
+    <label><input type="checkbox" id="defaultPic">Yes</label>
+    
+    <p>Enter the greeting text below:</p>
+    <textarea id="greetingText" rows="4" cols="30">Happy Birthday, and many more</textarea>
+    
+    <br><br>
+    <button id="updateBtn">Update</button>
+  </div>
+  
+  <!-- Right side birthday card -->
+  <div id="card" style="float: left; width: 300px; height: 400px; margin-left: 50px; padding: 20px; background-color: yellow;">
+    <div id="message" style="text-align: center;">
+      Happy Birthday, and many more
+    </div>
+    <img id="cakeImg" src="cake.jpeg" alt="Cake" 
+         style="display: block; margin: 20px auto; width: 100px;"/>
+  </div>
+</body>
+</html>

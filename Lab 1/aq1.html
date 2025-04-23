@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #box { position: relative; width: 100px; height: 300px; border: 1px solid black; overflow: hidden; }
+    #ball { width: 30px; height: 30px; border-radius: 50%; background: red; position: absolute; top: 0; left: 35px; }
+  </style>
+  <script src="../jquery-3.7.1.min.js"></script>
+</head>
+<body>
+  <div id="box"><div id="ball"></div></div>
+  <script>
+    function bounce() {
+      $('#ball').animate({ top: '270px' }, 500).animate({ top: '0px' }, 500, bounce);
+    }
+    bounce();
+  </script>
+</body>
+</html>

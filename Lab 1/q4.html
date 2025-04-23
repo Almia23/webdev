@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><script src="../jquery-3.7.1.min.js"></script></head>
+<body>
+  <select id="brand">
+    <option>HP</option><option>Nokia</option><option>Samsung</option><option>Motorola</option><option>Apple</option>
+  </select><br>
+  <input type="checkbox" value="Mobile" class="item">Mobile
+  <input type="checkbox" value="Laptop" class="item">Laptop<br>
+  Quantity: <input id="qty" type="number"><br>
+  <button id="bill">Produce Bill</button>
+  <script>
+    const prices = { Mobile: 10000, Laptop: 40000 };
+    $('#bill').click(() => {
+      let total = 0, q = +$('#qty').val();
+      $('.item:checked').each(function() {
+        total += prices[this.value] * q;
+      });
+      alert('Total: ₹' + total);
+    });
+  </script>
+</body>
+</html>

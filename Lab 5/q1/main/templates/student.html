@@ -1,0 +1,11 @@
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+  </form>
+  
+  {% if data %}
+    <h3>Submitted Data:</h3>
+    <textarea rows="6" cols="50">{{ data }}</textarea>
+    <p><b>Percentage:</b> {{ percent }}%</p>
+  {% endif %}

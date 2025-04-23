@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee CRUD Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Management System</h1>
+    <form id="employeeForm">
+        <input type="hidden" id="employeeId">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="position">Position:</label>
+        <input type="text" id="position" required>
+        <button type="submit">Submit</button>
+    </form>
+    <h2>Employee List</h2>
+    <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <br>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let employees = [];
+            const employeeForm = document.getElementById('employeeForm');
+            const employeeTable = document.getElementById('employeeTable').getElementsByTagName('tbody')[0];
+
+            employeeForm.addEventListener('submit', event => {
+                event.preventDefault();
+                const id = document.getElementById('employeeId').value;
+                const name = document.getElementById('name').value;
+                const position = document.getElementById('position').value;
+
+                if (id) {
+                    updateEmployee(id, name, position);
+                } else {
+                    createEmployee(name, position);
+                }
+
+                employeeForm.reset();
+            });
+
+            function createEmployee(name, position) {
+                const id = Date.now().toString();
+                employees.push({ id, name, position });
+                renderEmployees();
+            }
+
+            function readEmployees() {
+                return employees;
+            }
+
+            function updateEmployee(id, name, position) {
+                employees = employees.map(employee => employee.id === id ? { id, name, position } : employee);
+                renderEmployees();
+            }
+
+            function deleteEmployee(id) {
+                employees = employees.filter(employee => employee.id !== id);
+                renderEmployees();
+            }
+
+            function renderEmployees() {
+                employeeTable.innerHTML = '';
+                readEmployees().forEach(employee => {
+                    const row = employeeTable.insertRow();
+                    row.insertCell(0).innerText = employee.id;
+                    row.insertCell(1).innerText = employee.name;
+                    row.insertCell(2).innerText = employee.position;
+
+                    const actionsCell = row.insertCell(3);
+                    actionsCell.innerHTML = `
+                        <button onclick="editEmployee('${employee.id}')">Edit</button>
+                        <button onclick="deleteEmployee('${employee.id}')">Delete</button>
+                    `;
+                });
+            }
+
+            window.editEmployee = function (id) {
+                const employee = employees.find(employee => employee.id === id);
+                document.getElementById('employeeId').value = employee.id;
+                document.getElementById('name').value = employee.name;
+                document.getElementById('position').value = employee.position;
+            }
+
+            window.deleteEmployee = function (id) {
+                deleteEmployee(id);
+            }
+
+            renderEmployees();
+        });
+    </script>
+</body>
+</html>

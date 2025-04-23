@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Webpage</title>
+  <link href="../bootstrap-5.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .top-part {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    .bottom-part {
+      background-color: #e9ecef;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .bottom-section {
+      flex: 1;
+      margin: 0 10px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Top part -->
+  <div class="top-part">
+    <h2>Top Part</h2>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Enter something">
+      <div class="input-group-append">
+        <span class="input-group-text">@example.com</span>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary">Button</button>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-secondary">Left</button>
+      <button type="button" class="btn btn-secondary">Middle</button>
+      <button type="button" class="btn btn-secondary">Right</button>
+    </div>
+  </div>
+
+  <!-- Bottom part -->
+  <div class="bottom-part">
+    <div class="bottom-section">
+      <h4>Section 1</h4>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enter something">
+        <div class="input-group-append">
+          <span class="input-group-text">@example.com</span>
+        </div>
+      </div>
+      <button type="button" class="btn btn-success">Button 1</button>
+    </div>
+    <div class="bottom-section">
+      <h4>Section 2</h4>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enter something">
+        <div class="input-group-append">
+          <span class="input-group-text">@example.com</span>
+        </div>
+      </div>
+      <button type="button" class="btn btn-danger">Button 2</button>
+    </div>
+    <div class="bottom-section">
+      <h4>Section 3</h4>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enter something">
+        <div class="input-group-append">
+          <span class="input-group-text">@example.com</span>
+        </div>
+      </div>
+      <button type="button" class="btn btn-warning">Button 3</button>
+    </div>
+  </div>
+</div>
+
+
+<script src="../bootstrap-5.3.5-dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

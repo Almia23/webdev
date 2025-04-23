@@ -1,0 +1,15 @@
+<p>Captcha: <strong>{{ captcha }}</strong></p>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.input_text }}
+  <button type="submit" {% if locked %}disabled{% endif %}>Check</button>
+</form>
+
+{% if msg %}
+  <p>{{ msg }}</p>
+{% endif %}
+
+{% if locked %}
+  <p><strong>Textbox Disabled after 3 failed attempts!</strong></p>
+{% endif %}

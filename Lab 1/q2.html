@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><script src="../jquery-3.7.1.min.js"></script></head>
+<body>
+  <input id="n1"><input id="n2">
+  <button onclick="calc('+')">+</button>
+  <button onclick="calc('-')">-</button>
+  <button onclick="calc('*')">*</button>
+  <button onclick="calc('/')">/</button>
+  <div id="res"></div>
+  <script>
+    function calc(op){
+      let a = +$('#n1').val(), b = +$('#n2').val();
+      $('#res').text(eval(`${a}${op}${b}`));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+# django-admin startproject lab5q1 .
+# python manage.py startapp main
+
+# add main to installed_apps
+
+# in root urls.py:
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('main.urls'))
+]
+
+# in each apps main, create urls.py:
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.<your_view_name>),
+]
+Replace <your_view_name> with the function (student_view, promo_view, captcha_view, etc.).
+
+# run using 
+python manage.py migrate
+python manage.py runserver

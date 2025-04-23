@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #container { position: relative; width: 300px; }
+    #container img { width: 100%; }
+    #text {
+      position: absolute; bottom: 0; background: rgba(0,0,0,0.5);
+      color: white; width: 100%; text-align: center; display: none;
+    }
+  </style>
+  <script src="../jquery-3.7.1.min.js"></script>
+</head>
+<body>
+  <div id="container">
+    <img src="cake.jpeg">
+    <div id="text">Happy Birthday!</div>
+  </div>
+  <script>
+    $('#container').hover(
+      () => $('#text').slideDown(),
+      () => $('#text').slideUp()
+    );
+  </script>
+</body>
+</html>
